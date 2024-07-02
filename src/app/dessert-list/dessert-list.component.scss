@@ -7,8 +7,17 @@ img {
     height: 60px;
 }
 
+
+td {
+    vertical-align: middle;
+}
+
 .onSale {
     border-color: 2px solid green;
     background-color: rgb(187, 238, 187) ;
 }
 
+
+input {
+    max-width: 40px;
+}

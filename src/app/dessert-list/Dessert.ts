@@ -4,4 +4,5 @@ export interface Dessert {
     stock: number;
     image: string;
     onSale: boolean;
+    quantity: number;
 }

@@ -7,7 +7,37 @@ import { Dessert } from './Dessert';
   styleUrl: './dessert-list.component.scss'
 })
 export class DessertListComponent {
-//postres para agregar: cheesecake clasico, cheesecake de oreo, lemon pie y marquise
+
+  upQuantity(dessert: Dessert): void {
+    if (dessert.quantity < dessert.stock) {
+      dessert.quantity++;
+    }
+  }
+
+  downQuantity(dessert: Dessert): void {
+    if (dessert.quantity > 0) {
+      dessert.quantity--;
+    }
+  }
+
+  changeQuantity(event: KeyboardEvent, dessert: Dessert): void {
+
+    const allowedKey = 'Backspace'
+
+    if (event.key && !event.key.match(/[0-9]/) && !event.key.includes(allowedKey)) {
+      dessert.quantity = 0;
+      /* event.preventDefault(); */
+    }
+
+    if (event.key) {
+      if (dessert.quantity > dessert.stock) {
+        dessert.quantity = dessert.stock
+      } else if (dessert.quantity < 0) {
+        dessert.quantity = 0
+      }
+    }
+  }
+
   desserts: Dessert[] = [
     {
       "name": "Tiramisu",
@@ -15,6 +45,7 @@ export class DessertListComponent {
       "stock": 4,
       "image": "assets/tiramisu.png",
       "onSale": false,
+      "quantity": 0,
     },
     {
       "name": "Cheesecake",
@@ -22,6 +53,7 @@ export class DessertListComponent {
       "stock": 3,
       "image": "assets/cheesecake.png",
       "onSale": false,
+      "quantity": 0,
     },
     {
       "name": "Cheesecake de oreo",
@@ -29,6 +61,7 @@ export class DessertListComponent {
       "stock": 7,
       "image": "assets/cheesecake-de-oreo.png",
       "onSale": true,
+      "quantity": 0,
     },
     {
       "name": "Lemon pie",
@@ -36,6 +69,7 @@ export class DessertListComponent {
       "stock": 0,
       "image": "assets/lemon-pie.png",
       "onSale": false,
+      "quantity": 0,
     },
     {
       "name": "Brownie",
@@ -43,6 +77,7 @@ export class DessertListComponent {
       "stock": 2,
       "image": "assets/brownie.png",
       "onSale": false,
+      "quantity": 0,
     }
   ]
 }

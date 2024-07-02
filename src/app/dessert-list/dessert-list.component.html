@@ -1,28 +1,37 @@
 <h2>Listado de postres</h2>
-<table class="table">     
+<table class="table align-middle">     
     <thead>
         <tr>
             <th>Postre</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Imagen</th>
+            <th>Agregar</th>
         </tr>
     </thead>
     <tbody>
         @for (dessert of desserts; track dessert.name ) {
-            <tr >
+            <tr>
               <td>{{ dessert.name }}</td>
               <td [ngClass]="{'onSale': dessert.onSale}">{{ dessert.price | currency}}</td>
               @if (dessert.stock >= 4) {
-                <td class="badge bg-success">{{ dessert.stock }}</td>
+                <td class="badge text-bg-success">{{ dessert.stock }}</td>
               } 
               @else if (dessert.stock > 0 && dessert.stock < 4) {
-                <td class="badge bg-warning">{{ dessert.stock }}</td>
+                <td class="badge text-bg-warning">{{ dessert.stock }}</td>
               }
               @else {
-                <td class="badge bg-danger">SIN STOCK</td>
+                <td class="badge text-bg-danger">SIN STOCK</td>
               }
               <td><img [src]="dessert.image"></td>
+              <td>
+                <button class="btn btn-secondary btn-sm" (click)="downQuantity(dessert)">-</button> 
+                <input 
+                type="text" 
+                [(ngModel)]="dessert.quantity"
+                (keyup)="changeQuantity($event,dessert)"> 
+                <button class="btn btn-secondary btn-sm" (click)="upQuantity(dessert)">+</button> 
+              </td>
             </tr>
           } @empty {
             <tr>

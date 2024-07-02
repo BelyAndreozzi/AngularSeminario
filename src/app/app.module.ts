@@ -5,14 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DessertListComponent } from './dessert-list/dessert-list.component';
 
+import { FormsModule } from '@angular/forms';
+import { DessertAboutComponent } from './dessert-about/dessert-about.component';
+import { DessertCartComponent } from './dessert-cart/dessert-cart.component';
+import { DessertHomeComponent } from './dessert-home/dessert-home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    DessertListComponent
+    DessertListComponent,
+    DessertAboutComponent,
+    DessertCartComponent,
+    DessertHomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

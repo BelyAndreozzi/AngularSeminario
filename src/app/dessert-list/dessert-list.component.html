@@ -1,0 +1,34 @@
+<h2>Listado de postres</h2>
+<table class="table">     
+    <thead>
+        <tr>
+            <th>Postre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (dessert of desserts; track dessert.name ) {
+            <tr >
+              <td>{{ dessert.name }}</td>
+              <td [ngClass]="{'onSale': dessert.onSale}">{{ dessert.price | currency}}</td>
+              @if (dessert.stock >= 4) {
+                <td class="badge bg-success">{{ dessert.stock }}</td>
+              } 
+              @else if (dessert.stock > 0 && dessert.stock < 4) {
+                <td class="badge bg-warning">{{ dessert.stock }}</td>
+              }
+              @else {
+                <td class="badge bg-danger">SIN STOCK</td>
+              }
+              <td><img [src]="dessert.image"></td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4">No hay postres para mostrar.</td>
+            </tr>
+          }
+    </tbody>
+</table>
+

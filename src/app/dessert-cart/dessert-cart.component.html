@@ -1,1 +1,6 @@
 <h2>Carrito</h2>
+<ul>
+    @for (d of cartList$ | async; track d.name) {
+        <li>{{ d.name }}: {{ d.quantity }}</li>
+    }
+</ul>

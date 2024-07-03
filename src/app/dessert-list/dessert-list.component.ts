@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Dessert } from './Dessert';
+import { DessertCartService } from '../dessert-cart.service';
 
 @Component({
   selector: 'app-dessert-list',
@@ -7,36 +8,6 @@ import { Dessert } from './Dessert';
   styleUrl: './dessert-list.component.scss'
 })
 export class DessertListComponent {
-
-  upQuantity(dessert: Dessert): void {
-    if (dessert.quantity < dessert.stock) {
-      dessert.quantity++;
-    }
-  }
-
-  downQuantity(dessert: Dessert): void {
-    if (dessert.quantity > 0) {
-      dessert.quantity--;
-    }
-  }
-
-  changeQuantity(event: KeyboardEvent, dessert: Dessert): void {
-
-    const allowedKey = 'Backspace'
-
-    if (event.key && !event.key.match(/[0-9]/) && !event.key.includes(allowedKey)) {
-      dessert.quantity = 0;
-      /* event.preventDefault(); */
-    }
-
-    if (event.key) {
-      if (dessert.quantity > dessert.stock) {
-        dessert.quantity = dessert.stock
-      } else if (dessert.quantity < 0) {
-        dessert.quantity = 0
-      }
-    }
-  }
 
   desserts: Dessert[] = [
     {
@@ -80,4 +51,15 @@ export class DessertListComponent {
       "quantity": 0,
     }
   ]
+
+  constructor(private cart: DessertCartService) {
+    
+  }
+
+  addToCart(dessert: Dessert) : void {
+    this.cart.addToCart(dessert);
+    dessert.stock -= dessert.quantity
+    dessert.quantity = 0
+  }
+
 }

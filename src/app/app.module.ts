@@ -10,6 +10,7 @@ import { DessertAboutComponent } from './dessert-about/dessert-about.component';
 import { DessertCartComponent } from './dessert-cart/dessert-cart.component';
 import { DessertHomeComponent } from './dessert-home/dessert-home.component';
 import { InputNumberComponent } from './input-number/input-number.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InputNumberComponent } from './input-number/input-number.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

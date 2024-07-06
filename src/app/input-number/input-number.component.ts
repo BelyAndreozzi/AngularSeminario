@@ -8,9 +8,6 @@ import { Dessert } from '../dessert-list/Dessert';
 })
 export class InputNumberComponent {
 
-  /* @Input()
-  dessert!: Dessert; */
-
   @Input() 
   quantity: number = 0;
 

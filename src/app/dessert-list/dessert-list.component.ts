@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Dessert } from './Dessert';
 import { DessertCartService } from '../dessert-cart.service';
+import { DessertsDataService } from '../desserts-data.service';
 
 @Component({
   selector: 'app-dessert-list',
@@ -9,51 +10,16 @@ import { DessertCartService } from '../dessert-cart.service';
 })
 export class DessertListComponent {
 
-  desserts: Dessert[] = [
-    {
-      "name": "Tiramisu",
-      "price": 4500,
-      "stock": 4,
-      "image": "assets/tiramisu.png",
-      "onSale": false,
-      "quantity": 0,
-    },
-    {
-      "name": "Cheesecake",
-      "price": 5000,
-      "stock": 3,
-      "image": "assets/cheesecake.png",
-      "onSale": false,
-      "quantity": 0,
-    },
-    {
-      "name": "Cheesecake de oreo",
-      "price": 3600,
-      "stock": 7,
-      "image": "assets/cheesecake-de-oreo.png",
-      "onSale": true,
-      "quantity": 0,
-    },
-    {
-      "name": "Lemon pie",
-      "price": 5000,
-      "stock": 0,
-      "image": "assets/lemon-pie.png",
-      "onSale": false,
-      "quantity": 0,
-    },
-    {
-      "name": "Brownie",
-      "price": 7000,
-      "stock": 2,
-      "image": "assets/brownie.png",
-      "onSale": false,
-      "quantity": 0,
-    }
-  ]
+  desserts: Dessert[] = [];
 
-  constructor(private cart: DessertCartService) {
-    
+  constructor(
+    private cart: DessertCartService,
+    private dessertsDataService: DessertsDataService
+  ) {}
+
+  ngOnInit(): void{
+    this.dessertsDataService.getAll()
+    .subscribe(desserts => this.desserts = desserts)
   }
 
   addToCart(dessert: Dessert) : void {

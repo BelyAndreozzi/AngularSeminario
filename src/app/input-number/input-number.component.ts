@@ -38,7 +38,6 @@ export class InputNumberComponent {
 
     if (event.key && !event.key.match(/[0-9]/) && !event.key.includes(allowedKey)) {
       this.quantity = 0;
-      /* event.preventDefault(); */
     }
 
     if (event.key) {

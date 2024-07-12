@@ -1,27 +1,38 @@
-# Todolist
+# Postres
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
+## Autor
 
-## Development server
+- Fiamma Belén Andreozzi
+- 44416819
+- fbelen.andreozzi@gmail.com
+- Tandil
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Postres
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para el proyecto del Seminario de Angular 2024 de la UNICEN Exactas, realicé una página para la compra de postres. 
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## API
+Se utilizó Mockapi. 
+**API URL**: https://6689838e0ea28ca88b8835ca.mockapi.io/api/desserts/desserts
 
-## Running unit tests
+#### Obtener todos los postres
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```http
+  GET /api/desserts/desserts
+```
+## Características
 
-## Running end-to-end tests
+- **Ruteo**: visibilidad del home, otro y otro más.
+- **Componentes**: home incluye dos componentes interconectados a través de un tercer componente.
+- **Interfaces**: utilizadas para la creación de los postres.
+- **Directivas y controles de flujo**: for e if utilizados, por ejemplo, para mostrar cada postre y para mostrar la oferta en aquellos que lo tengan. 
+- **Comunicación entre componentes**: utilizado para el input.
+- **Servicios**: consumo de una MockAPI con la lista de productos.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Servidor de desarrollo
 
-## Further help
+Utiliza `ng serve` para el servidor de desarrollo. En el navegador utiliza `http://localhost:4200/` para visualizar. Se actualizará automáticamente si haces algún cambio
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+El proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
